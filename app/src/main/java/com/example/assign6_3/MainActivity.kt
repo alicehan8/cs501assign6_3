@@ -103,7 +103,7 @@ suspend fun measureSoundLevels(onDbMeasured: (Float) -> Unit) {
             val read = audioRecord.read(buffer, 0, buffer.size)
 
             if (read > 0) {
-                // Compute RMS amplitude
+                // Compute amplitude
                 var sum = 0.0
                 for (i in 0 until read) sum += buffer[i] * buffer[i]
                 val rms = sqrt(sum / read)
@@ -162,7 +162,7 @@ fun SoundMeterUI(dbValue: Float, isLoud: Boolean, threshold: Float) {
 
         if (isLoud) {
             Text(
-                "⚠️ Noise too high!",
+                "TOO LOUD!!",
                 color = Color.Red,
                 fontSize = 20.sp,
                 fontWeight = FontWeight.Bold
